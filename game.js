@@ -113,7 +113,7 @@ function updateValues(){
 
   // Table
   document.getElementById("moneyAmount").innerHTML = money.amount.toFixed(2) + " " + money.namePlural;
-  document.getElementById("creativityAmount").innerHTML = creativity.amount.toFixed(2) + " (" + creativity.gainPerSec + "/s)";
+  document.getElementById("creativityAmount").innerHTML = creativity.amount.toFixed(2) + " (" + creativity.gainPerSec.toFixed(2) + "/s)";
   document.getElementById("notesAmount").innerHTML = notes.amount.toFixed(2);
   document.getElementById("barsAmount").innerHTML = bars.amount.toFixed(2);
   document.getElementById("thoughtAmount").innerHTML = thoughts.amount.toFixed(0);
