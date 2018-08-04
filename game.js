@@ -8,7 +8,7 @@ data.money = {
   nameSingular: "€",
   namePlural: "€",
   amount: 0
-}
+};
 
 data.creativity = {
   nameSingular: "Creativity",
@@ -16,7 +16,7 @@ data.creativity = {
   amount: 0,
   value: 0.1,
   gainPerSec: 0
-}
+};
 
 data.notes = {
   nameSingular: "Note",
@@ -24,8 +24,8 @@ data.notes = {
   amount: 0,
   cost: 10,
   costMultiplier: globalCostMultiplier,
-  currency: data.creativity
-}
+  currency: "creativity"
+};
 
 data.bars = {
   nameSingular: "Bar",
@@ -33,8 +33,8 @@ data.bars = {
   amount: 0,
   cost: 4,
   costMultiplier: globalCostMultiplier,
-  currency: data.notes
-}
+  currency: "notes"
+};
 
 data.thoughts = {
   nameSingular: "Thought",
@@ -42,10 +42,10 @@ data.thoughts = {
   amount: 0,
   cost: 1,
   costMultiplier: 1.1,
-  currency: data.bars,
-  outputType: data.creativity,
+  currency: "bars",
+  outputType: "creativity",
   outputAmount: 0.1
-}
+};
 
 data.weed = {
   nameSingular: "Weed",
@@ -53,10 +53,10 @@ data.weed = {
   amount: 0,
   cost: 8,
   costMultiplier: 1.1,
-  currency: data.money,
-  outputType: data.creativity,
+  currency: "money",
+  outputType: "creativity",
   outputAmount: 1
-}
+};
 
 // Initialize game
 $(document).ready(function(){
@@ -82,28 +82,28 @@ document.getElementById("addCreativity").addEventListener("click", function(){
 
 document.getElementById("addNote").addEventListener("click", function(){
   add(data.notes, 1);
-  subtract(data.notes.currency, data.notes.cost);
+  subtract(data[data.notes.currency], data.notes.cost);
   data.notes.cost = data.notes.cost * data.notes.costMultiplier;
   updateValues();
 });
 
 document.getElementById("addBar").addEventListener("click", function(){
   add(data.bars, 1);
-  subtract(data.bars.currency, data.bars.cost);
+  subtract(data[data.bars.currency], data.bars.cost);
   data.bars.cost = data.bars.cost * data.bars.costMultiplier;
   updateValues();
 })
 
 document.getElementById("addThought").addEventListener("click", function(){
   add(data.thoughts, 1);
-  subtract(data.thoughts.currency, data.thoughts.cost);
+  subtract(data[data.thoughts.currency], data.thoughts.cost);
   data.thoughts.cost = data.thoughts.cost * data.thoughts.costMultiplier;
   updateValues();
 })
 
 document.getElementById("addWeed").addEventListener("click", function(){
   add(data.weed, 1);
-  subtract(data.weed.currency, data.weed.cost);
+  subtract(data[data.weed.currency], data.weed.cost);
   data.weed.cost = data.weed.cost * data.weed.costMultiplier;
   updateValues();
 })
@@ -116,8 +116,8 @@ document.getElementById("sellCreativity").addEventListener("click", function(){
 
 // Automation
 setInterval(function(){
-    data.weed.outputType.amount = data.weed.outputType.amount + ((data.weed.amount * data.weed.outputAmount)/(1000/data.tickrate));
-    data.thoughts.outputType.amount = data.thoughts.outputType.amount + ((data.thoughts.amount * data.thoughts.outputAmount)/(1000/data.tickrate));
+    data[data.weed.outputType].amount = data[data.weed.outputType].amount + ((data.weed.amount * data.weed.outputAmount)/(1000/data.tickrate));
+    data[data.thoughts.outputType].amount = data[data.thoughts.outputType].amount + ((data.thoughts.amount * data.thoughts.outputAmount)/(1000/data.tickrate));
     data.creativity.gainPerSec = (data.weed.outputAmount*data.weed.amount) + (data.thoughts.outputAmount*data.thoughts.amount);
     updateValues();
 }, data.tickrate);
@@ -134,31 +134,31 @@ function updateValues(){
   document.getElementById("weedAmount").innerHTML = data.weed.amount.toFixed(0);
 
   // Button costs
-  document.getElementById("noteCost").innerHTML = data.notes.cost.toFixed(2) + " " + data.notes.currency.namePlural;
-  document.getElementById("barCost").innerHTML = data.bars.cost.toFixed(2) + " " + data.bars.currency.namePlural;
-  document.getElementById("thoughtCost").innerHTML = data.thoughts.cost.toFixed(2) + " " + data.thoughts.currency.namePlural;
-  document.getElementById("weedCost").innerHTML = data.weed.cost.toFixed(2) + " " + data.weed.currency.namePlural;
+  document.getElementById("noteCost").innerHTML = data.notes.cost.toFixed(2) + " " + data[data.notes.currency].namePlural;
+  document.getElementById("barCost").innerHTML = data.bars.cost.toFixed(2) + " " + data[data.bars.currency].namePlural;
+  document.getElementById("thoughtCost").innerHTML = data.thoughts.cost.toFixed(2) + " " + data[data.thoughts.currency].namePlural;
+  document.getElementById("weedCost").innerHTML = data.weed.cost.toFixed(2) + " " + data[data.weed.currency].namePlural;
 
   // Button availability
-  if(data.notes.currency.amount >= data.notes.cost){
+  if(data[data.notes.currency].amount >= data.notes.cost){
     document.getElementById("addNote").disabled = false;
   } else {
     document.getElementById("addNote").disabled = true;
   }
 
-  if(data.bars.currency.amount >= data.bars.cost){
+  if(data[data.bars.currency].amount >= data.bars.cost){
     document.getElementById("addBar").disabled = false;
   } else {
     document.getElementById("addBar").disabled = true;
   }
 
-  if(data.thoughts.currency.amount >= data.thoughts.cost){
+  if(data[data.thoughts.currency].amount >= data.thoughts.cost){
     document.getElementById("addThought").disabled = false;
   } else {
     document.getElementById("addThought").disabled = true;
   }
 
-  if(data.weed.currency.amount >= data.weed.cost){
+  if(data[data.weed.currency].amount >= data.weed.cost){
     document.getElementById("addWeed").disabled = false;
   } else {
     document.getElementById("addWeed").disabled = true;
