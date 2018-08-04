@@ -7,21 +7,21 @@ data.tickrate = 50;
 data.money = {
   nameSingular: "€",
   namePlural: "€",
-  amount: new Decimal(0)
+  amount: 0
 }
 
 data.creativity = {
   nameSingular: "Creativity",
   namePlural: "Creativity",
-  amount: new Decimal(0),
+  amount: 0,
   value: 0.1,
-  gainPerSec: new Decimal(0)
+  gainPerSec: 0
 }
 
 data.notes = {
   nameSingular: "Note",
   namePlural: "Notes",
-  amount: new Decimal(0),
+  amount: 0,
   cost: 10,
   costMultiplier: globalCostMultiplier,
   currency: data.creativity
@@ -30,7 +30,7 @@ data.notes = {
 data.bars = {
   nameSingular: "Bar",
   namePlural: "Bars",
-  amount: new Decimal(0),
+  amount: 0,
   cost: 4,
   costMultiplier: globalCostMultiplier,
   currency: data.notes
@@ -39,7 +39,7 @@ data.bars = {
 data.thoughts = {
   nameSingular: "Thought",
   namePlural: "Thoughts",
-  amount: new Decimal(0),
+  amount: 0,
   cost: 1,
   costMultiplier: 1.1,
   currency: data.bars,
@@ -50,7 +50,7 @@ data.thoughts = {
 data.weed = {
   nameSingular: "Weed",
   namePlural: "Weed",
-  amount: new Decimal(0),
+  amount: 0,
   cost: 8,
   costMultiplier: 1.1,
   currency: data.money,
@@ -66,13 +66,6 @@ $(document).ready(function(){
     data = JSON.parse(localStorage.getItem("data"));
     console.log(data); // to see if it worked
   }
-  data.money.amount = new Decimal(data.money.amount);
-  data.creativity.amount = new Decimal(data.creativity.amount);
-  data.creativity.gainPerSec = new Decimal(data.creativity.gainPerSec);
-  data.notes.amount = new Decimal(data.notes.amount);
-  data.bars.amount = new Decimal(data.bars.amount);
-  data.thoughts.amount = new Decimal(data.thoughts.amount);
-  data.weed.amount = new Decimal(data.thoughts.amount);
   // update output
   updateValues();
 });
@@ -123,8 +116,8 @@ document.getElementById("sellCreativity").addEventListener("click", function(){
 
 // Automation
 setInterval(function(){
-    data.weed.outputType.amount = data.weed.outputType.amount.plus((data.weed.amount * data.weed.outputAmount)/(1000/data.tickrate));
-    data.thoughts.outputType.amount = data.thoughts.outputType.amount.plus((data.thoughts.amount * data.thoughts.outputAmount)/(1000/data.tickrate));
+    data.weed.outputType.amount = data.weed.outputType.amount + ((data.weed.amount * data.weed.outputAmount)/(1000/data.tickrate));
+    data.thoughts.outputType.amount = data.thoughts.outputType.amount + ((data.thoughts.amount * data.thoughts.outputAmount)/(1000/data.tickrate));
     data.creativity.gainPerSec = (data.weed.outputAmount*data.weed.amount) + (data.thoughts.outputAmount*data.thoughts.amount);
     updateValues();
 }, data.tickrate);
@@ -180,12 +173,12 @@ function updateValues(){
 
 function add(target, count){
   //target.amount = target.amount + count;
-  target.amount = target.amount.plus(count);
+  target.amount = target.amount + count;
 }
 
 function subtract(target, count){
   //target.amount = target.amount - count;
-  target.amount = target.amount.minus(count);
+  target.amount = target.amount - count;
 }
 
 function save(){
