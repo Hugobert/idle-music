@@ -28,7 +28,11 @@ bars = {
 weed = {
   nameSingular: "Weed",
   namePlural: "Weed",
+<<<<<<< HEAD
   amount: new Decimal(0),
+=======
+  amount: new Decimal(1),
+>>>>>>> e9abbc5958dc305d7c881df2d6543ca77670567b
   cost: 1,
   costMultiplier: 1.1,
   currency: bars,
