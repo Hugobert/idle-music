@@ -78,7 +78,7 @@ setInterval(function(){
 function updateValues(){
 
   // Table
-  document.getElementById("creativityAmount").innerHTML = creativity.amount.toFixed(2);
+  document.getElementById("creativityAmount").innerHTML = creativity.amount.toNumber();
   document.getElementById("notesAmount").innerHTML = notes.amount.toFixed(2);
   document.getElementById("barsAmount").innerHTML = bars.amount.toFixed(2);
 

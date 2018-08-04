@@ -7,36 +7,44 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="css.css">
+    <title>Idle Music</title>
   </head>
   <body>
-    <div id="values">
-      <table class="table">
-        <tr>
-          <th scope="row">Creativity</th>
-          <td id="creativityAmount"></td>
-        </tr>
-        <tr>
-          <th scope="row">Notes</th>
-          <td id="notesAmount"></td>
-        </tr>
-        <tr>
-          <th scope="row">Bars</th>
-          <td id="barsAmount"></td>
-        </tr>
-        <tr>
-          <th scope="row">Weed</th>
-          <td id="weedAmount"></td>
-        </tr>
-      </table>
+
+    <!-- Side navigation -->
+    <div class="sidenav">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Creativity
+          <span id="creativityAmount"></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Notes
+          <span id="notesAmount"></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Bars
+          <span id="barsAmount"></span>
+        </li>
+        <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
+          Weed
+          <span id="weedAmount"></span>
+        </li>
+      </ul>
     </div>
 
-    <button type="button" class="btn btn-lg btn-primary" id="addCreativity">Get creative</button>
-    <button type="button" class="btn btn-lg btn-dark" id="addNote" disabled>Create note (<span id="noteCost"></span>)</button>
-    <button type="button" class="btn btn-lg btn-dark" id="addBar" disabled>Create bar (<span id="barCost"></span>)</button>
-
-    <button type="button" class="btn btn-lg btn-dark" id="addWeed" disabled>Get weed (<span id="weedCost"></span>)</button>
+    <!-- Page content -->
+    <div class="main">
+      <div id="basicButtons">
+        <button type="button" class="btn btn-lg btn-primary" id="addCreativity">Get creative</button>
+      </div>
+      <div id="advancedButtons">
+        <button type="button" class="btn btn-lg btn-dark btn-sm" id="addNote" disabled>Create note<br>(<span id="noteCost"></span>)</button>
+        <button type="button" class="btn btn-lg btn-dark btn-sm" id="addBar" disabled>Create bar<br>(<span id="barCost"></span>)</button>
+        <button type="button" class="btn btn-lg btn-dark btn-sm" id="addWeed" disabled>Get weed<br>(<span id="weedCost"></span>)</button>
+      </div>
+    </div>
 
     <!-- Optional JavaScript -->
 
