@@ -66,6 +66,13 @@ $(document).ready(function(){
     data = JSON.parse(localStorage.getItem("data"));
     console.log(data); // to see if it worked
   }
+  data.money.amount = new Decimal(data.money.amount);
+  data.creativity.amount = new Decimal(data.creativity.amount);
+  data.creativity.gainPerSec = new Decimal(data.creativity.gainPerSec);
+  data.notes.amount = new Decimal(data.notes.amount);
+  data.bars.amount = new Decimal(data.bars.amount);
+  data.thoughts.amount = new Decimal(data.thoughts.amount);
+  data.weed.amount = new Decimal(data.thoughts.amount);
   // update output
   updateValues();
 });
