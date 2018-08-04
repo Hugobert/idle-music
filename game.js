@@ -63,7 +63,7 @@ $(document).ready(function(){
   // If savegame exists...
   if(localStorage.getItem("data") != null){
     // load it into the data object
-    data = JSON.parse(localStorage.getItem("data"));
+    data = JSON.parse(Base64.decode(localStorage.getItem("data")));
     console.log(data); // to see if it worked
   }
   // update output
@@ -182,5 +182,5 @@ function subtract(target, count){
 }
 
 function save(){
-  localStorage.setItem("data",JSON.stringify(data));
+  localStorage.setItem("data",Base64.encode(JSON.stringify(data)));
 }
