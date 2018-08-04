@@ -15,6 +15,10 @@
     <!-- Side navigation -->
     <div class="sidenav">
       <ul class="list-group list-group-flush">
+        <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
+          Money
+          <span id="moneyAmount"></span>
+        </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Creativity
           <span id="creativityAmount"></span>
@@ -28,6 +32,10 @@
           <span id="barsAmount"></span>
         </li>
         <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
+          Thoughts
+          <span id="thoughtAmount"></span>
+        </li>
+        <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
           Weed
           <span id="weedAmount"></span>
         </li>
@@ -36,13 +44,17 @@
 
     <!-- Page content -->
     <div class="main">
-      <div id="basicButtons">
+      <div>
         <button type="button" class="btn btn-lg btn-primary" id="addCreativity">Get creative</button>
+        <button type="button" class="btn btn-lg btn-dark" id="sellCreativity">Do contract work</button>
       </div>
-      <div id="advancedButtons">
+      <div>
         <button type="button" class="btn btn-lg btn-dark btn-sm" id="addNote" disabled>Create note<br>(<span id="noteCost"></span>)</button>
         <button type="button" class="btn btn-lg btn-dark btn-sm" id="addBar" disabled>Create bar<br>(<span id="barCost"></span>)</button>
-        <button type="button" class="btn btn-lg btn-dark btn-sm" id="addWeed" disabled>Get weed<br>(<span id="weedCost"></span>)</button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-lg btn-dark btn-sm" id="addThought" disabled>Think<br>(<span id="thoughtCost"></span>)</button>
+        <button type="button" class="btn btn-lg btn-dark btn-sm" id="addWeed" disabled>Buy weed<br>(<span id="weedCost"></span>)</button>
       </div>
     </div>
 
