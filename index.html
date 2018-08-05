@@ -15,7 +15,6 @@
     <!-- Side navigation -->
     <div class="sidenav">
       <ul class="list-group list-group-flush">
-        <button type="button" class="btn btn-lg btn-dark btn-sm" id="save">Save (experimental)</button>
         <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
           Money
           <span id="moneyAmount"></span>
@@ -41,21 +40,45 @@
           <span id="weedAmount"></span>
         </li>
       </ul>
+      <div id="system" class="fixed-bottom">
+        <button type="button" class="btn btn-dark btn-sm" id="save">Save progress</button>
+        <button type="button" class="btn btn-dark btn-sm" id="reset">! RESET !</button>
+    </div>
     </div>
 
     <!-- Page content -->
     <div class="main">
-      <div>
-        <button type="button" class="btn btn-lg btn-primary" id="addCreativity">Get creative</button>
-        <button type="button" class="btn btn-lg btn-dark" id="sellCreativity">Do contract work</button>
-      </div>
-      <div>
-        <button type="button" class="btn btn-lg btn-dark btn-sm" id="addNote" disabled>Create note<br>(<span id="noteCost"></span>)</button>
-        <button type="button" class="btn btn-lg btn-dark btn-sm" id="addBar" disabled>Create bar<br>(<span id="barCost"></span>)</button>
-      </div>
-      <div>
-        <button type="button" class="btn btn-lg btn-dark btn-sm" id="addThought" disabled>Think<br>(<span id="thoughtCost"></span>)</button>
-        <button type="button" class="btn btn-lg btn-dark btn-sm" id="addWeed" disabled>Buy weed<br>(<span id="weedCost"></span>)</button>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <!-- TOP LEFT BOX -->
+            <button type="button" class="btn btn-lg btn-primary" id="addCreativity">Get creative</button>
+            <button type="button" class="btn btn-lg btn-dark" id="sellCreativity">Do contract work</button>
+          </div>
+          <div class="col">
+            <!-- TOP RIGHT BOX -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <!-- MIDDLE LEFT BOX -->
+            <button type="button" class="btn btn-lg btn-dark btn-sm" id="addNote" disabled>Create note<br>(<span class="small" id="noteCost"></span>)</button>
+            <button type="button" class="btn btn-lg btn-dark btn-sm" id="addBar" disabled>Create bar<br>(<span class="small" id="barCost"></span>)</button>
+          </div>
+          <div class="col">
+            <!-- MIDDLE RIGHT BOX -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <!-- BOTTOM LEFT BOX -->
+            <button type="button" class="btn btn-lg btn-dark btn-sm" id="addThought" disabled>Think<br>(<span class="small" id="thoughtCost"></span>)</button>
+            <button type="button" class="btn btn-lg btn-dark btn-sm" id="addWeed" disabled>Buy weed<br>(<span class="small" id="weedCost"></span>)</button>
+          </div>
+          <div class="col">
+            <!-- BOTTOM RIGHT BOX -->
+          </div>
+        </div>
       </div>
     </div>
 
