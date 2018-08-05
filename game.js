@@ -64,7 +64,10 @@ $(document).ready(function(){
   if(localStorage.getItem("data") != null){
     // load it into the data object
     data = JSON.parse(Base64.decode(localStorage.getItem("data")));
+    console.log("Saved game successfully loaded");
     console.log(data); // to see if it worked
+  } else {
+    console.log("Starting a new game");
   }
   // update output
   updateValues();
@@ -73,6 +76,10 @@ $(document).ready(function(){
 // Button handlers
 document.getElementById("save").addEventListener("click", function(){
   save();
+})
+
+document.getElementById("reset").addEventListener("click", function(){
+  deleteSave();
 })
 
 document.getElementById("addCreativity").addEventListener("click", function(){
@@ -183,4 +190,9 @@ function subtract(target, count){
 
 function save(){
   localStorage.setItem("data",Base64.encode(JSON.stringify(data)));
+}
+
+function deleteSave(){
+  localStorage.removeItem("data");
+  location.reload();
 }
