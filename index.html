@@ -7,88 +7,166 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="css/site.min.css">
+
     <title>Idle Music</title>
   </head>
+
   <body>
+    <!-- SIDEBAR -->
+    <nav class="sidenav">
+      <div class="list-group list-group-flush nav nav-tabs" role="tablist" id="nav-tab">
+        <li id="categoryMoney" class="nav-link nav-item list-group-item list-group-item-warning list-group-item-action flex-column d-flex justify-content-between align-items-start active show" data-toggle="tab" href="#pageMoney" role="tab" aria-controls="pageMoney" aria-selected="true">
+          <small>Money</small>
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><span id="moneyAmount"></span></h5>
+            <small><span id="moneyPerSec"></span>/s</small>
+          </div>
+        </li>
 
-    <!-- Side navigation -->
-    <div class="sidenav">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
-          Money
-          <span id="moneyAmount"></span>
+        <li id="categoryMusic" class="nav-link nav-item list-group-item list-group-item-primary list-group-item-action flex-column d-flex justify-content-between align-items-start" data-toggle="tab" href="#pageMusic" role="tab" aria-controls="pageMusic" aria-selected="false">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <small class="mb-1">Notes:</small>
+              </div>
+              <div class="col">
+                <small><span id="notesAmount"></span></small>
+              </div>
+              <div class="col">
+                <small><span id="notesPerSec"></span>/s</small>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <small class="mb-1">Phrases:</small>
+              </div>
+              <div class="col">
+                <small><span id="phrasesAmount"></span></small>
+              </div>
+              <div class="col">
+                <small><span id="phrasesPerSec"></span>/s</small>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <small class="mb-1">Chains:</small>
+              </div>
+              <div class="col">
+                <small>ZAHL</small>
+              </div>
+              <div class="col">
+                <small>ZAHL/s</small>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <small class="mb-1">Songs:</small>
+              </div>
+              <div class="col">
+                <small>ZAHL</small>
+              </div>
+              <div class="col">
+                <small>ZAHL/s</small>
+              </div>
+            </div>
+          </div>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Creativity
-          <span id="creativityAmount"></span>
+
+        <li id="categoryCreativity" class="nav-link nav-item list-group-item list-group-item-success list-group-item-action flex-column d-flex justify-content-between align-items-start" data-toggle="tab" href="#pageCreativity" role="tab" aria-controls="pageCreativity" aria-selected="false">
+          <small>Creativity</small>
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><span id="creativityAmount"></span></h5>
+            <small><span id="creativityPerSec"></span>/s</small>
+          </div>
+          <div id="weedStats" class="d-flex w-100 justify-content-between">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <small class="mb-1">Weed:</small>
+                </div>
+                <div class="col">
+                  <small><span id="weedAmount"></span></small>
+                </div>
+                <div class="col">
+                  <small><span id="weedPerSec"></span>/s</small>
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Notes
-          <span id="notesAmount"></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Bars
-          <span id="barsAmount"></span>
-        </li>
-        <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
-          Thoughts
-          <span id="thoughtAmount"></span>
-        </li>
-        <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
-          Weed
-          <span id="weedAmount"></span>
-        </li>
-      </ul>
+
+      </div>
+
       <div id="system" class="fixed-bottom">
-        <button type="button" class="btn btn-dark btn-sm" id="save">Save progress</button>
+        <div type="button" class="btn btn-dark btn-sm" id="save">Save progress</div>
         <button type="button" class="btn btn-dark btn-sm" id="reset">! RESET !</button>
-    </div>
-    </div>
+      </div>
+    </nav>
 
-    <!-- Page content -->
+    <!-- CONTENT -->
     <div class="main">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <!-- TOP LEFT BOX -->
-            <button type="button" class="btn btn-lg btn-primary" id="addCreativity">Get creative</button>
-            <button type="button" class="btn btn-lg btn-dark" id="sellCreativity">Do contract work</button>
-          </div>
-          <div class="col">
-            <!-- TOP RIGHT BOX -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <!-- MIDDLE LEFT BOX -->
-            <button type="button" class="btn btn-lg btn-dark btn-sm" id="addNote" disabled>Create note<br>(<span class="small" id="noteCost"></span>)</button>
-            <button type="button" class="btn btn-lg btn-dark btn-sm" id="addBar" disabled>Create bar<br>(<span class="small" id="barCost"></span>)</button>
-          </div>
-          <div class="col">
-            <!-- MIDDLE RIGHT BOX -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <!-- BOTTOM LEFT BOX -->
-            <button type="button" class="btn btn-lg btn-dark btn-sm" id="addThought" disabled>Think<br>(<span class="small" id="thoughtCost"></span>)</button>
-            <button type="button" class="btn btn-lg btn-dark btn-sm" id="addWeed" disabled>Buy weed<br>(<span class="small" id="weedCost"></span>)</button>
-          </div>
-          <div class="col">
-            <!-- BOTTOM RIGHT BOX -->
+      <div class="tab-content" id="nav-tabContent">
+
+        <!-- MONEY -->
+        <div class="tab-pane fade show active" id="pageMoney" role="tabpanel" aria-labelledby="categoryMoney">
+          <h3>Money</h3>
+          <div class="container">
+            <div class="row" id="moneyClickSection">
+              <div class="col gameButton btn btn-success" id="clickMoneyBtn">
+                Beg for money
+              </div>
+              <div class="col"></div>
+            </div>
+            <div class="row">
+              <div class="col gameButton btn btn-info justify-content-between" id="buyWeedBtn">
+                <div class="row">
+                  <div class="col">
+                    Buy weed
+                  </div>
+                  <div class="col">
+                    <small><span id="buyWeedCost"></span></small>
+                  </div>
+                </div>
+              </div>
+              <div class="col"></div>
+            </div>
           </div>
         </div>
+        <div class="tab-pane fade" id="pageMusic" role="tabpanel" aria-labelledby="categoryMusic">
+          <div class="container">
+            <div class="row" id="musicBuySection">
+              <div class="col gameButton btn btn-primary justify-content-between" id="buyNoteBtn">
+                <div class="row">
+                  <div class="col">
+                    Create note
+                  </div>
+                  <div class="col">
+                    <small><span id="buyNoteCost"></span></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pageCreativity" role="tabpanel" aria-labelledby="categoryCreativity">...</div>
       </div>
     </div>
 
     <!-- Optional JavaScript -->
-
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/Patashu/break_infinity.js/master/break_break_infinity.min.js"></script>
     <script src="https://cdn.rawgit.com/dankogai/js-base64/master/base64.min.js"></script>
-    <script src="game.js"></script>
+    <script src="js/items.js"></script>
+    <script src="js/game.js"></script>
   </body>
 </html>

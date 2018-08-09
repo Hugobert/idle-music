@@ -1,0 +1,65 @@
+/* General Layout */
+$sidebarWidth: 280px;
+
+/* Colors */
+$yellowSelected: #fec34d;
+$yellowText: #856404;
+$darkGrey: #101010;
+$grassGreen: #77AA66;
+$grassGreen-dark: #558844;
+
+/* Import Partials */
+
+/* Mixins */
+@mixin unselectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+/* Sidebar */
+.sidenav {
+   height: 100%; /* Full-height: remove this if you want "auto" height */
+   width: $sidebarWidth;
+   position: fixed; /* (stay in place on scroll) */
+   z-index: 1; /* Stay on top */
+   top: 0; /* Stay at the top */
+   left: 0;
+   background-color: $darkGrey;
+   overflow-x: hidden; /* Disable horizontal scroll */
+   padding-top: 0px;
+   @include unselectable;
+}
+
+#categoryMusic #weedStats {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.list-group-item-warning.list-group-item-action.active {
+  background-color: $yellowSelected;
+  color: $yellowText;
+}
+
+/* Page content */
+.main {
+   margin-left: $sidebarWidth; /* Same as the width of the sidebar */
+   padding: 10px;
+   div {
+     padding: 10px;
+   }
+
+   .gameButton {
+     height: 50px;
+     padding: 10px 10px;
+     border-radius: 5px;
+     color: #fff;
+     .row {
+       padding: 0;
+       .col {
+         padding: 0;
+       }
+     }
+   }
+}
