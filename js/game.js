@@ -100,6 +100,8 @@ $(document).ready(function(){
     document.getElementById('phrasesPerSec').innerHTML = readable(game.phrases.gainPerSec,"other");
     document.getElementById('chainsAmount').innerHTML = readable(game.chains.amount,"other");
     document.getElementById('chainsPerSec').innerHTML = readable(game.chains.gainPerSec,"other");
+    document.getElementById('songsAmount').innerHTML = readable(game.songs.amount,"other");
+    document.getElementById('songsPerSec').innerHTML = readable(game.songs.gainPerSec,"other");
     document.getElementById('buyWeedCost').innerHTML = readable(game.weed.cost,"money");
     document.getElementById('buyNoteCost').innerHTML = readable(game.notes.cost,"other") + " " + game[game.notes.buyCurrency].name;
 
