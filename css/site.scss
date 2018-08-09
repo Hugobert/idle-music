@@ -1,6 +1,9 @@
 /* General Layout */
 $sidebarWidth: 280px;
 
+/* Bigger Buttons */
+$biggerButtonHeight: 70px;
+
 /* Colors */
 $yellowSelected: #fec34d;
 $yellowText: #856404;
@@ -64,6 +67,10 @@ $grassGreen-dark: #558844;
    }
 
    #buyWeedPlantBtn {
-     height: 70px;
+     height: $biggerButtonHeight;
+   }
+
+   #buyNoteGeneratorBtn {
+     height: $biggerButtonHeight;
    }
 }
