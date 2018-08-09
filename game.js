@@ -98,11 +98,15 @@ $(document).ready(function(){
     document.getElementById('notesPerSec').innerHTML = readable(game.notes.gainPerSec,"other");
     document.getElementById('phrasesAmount').innerHTML = readable(game.phrases.amount,"other");
     document.getElementById('phrasesPerSec').innerHTML = readable(game.phrases.gainPerSec,"other");
+    document.getElementById('chainsAmount').innerHTML = readable(game.chains.amount,"other");
+    document.getElementById('chainsPerSec').innerHTML = readable(game.chains.gainPerSec,"other");
     document.getElementById('buyWeedCost').innerHTML = readable(game.weed.cost,"money");
     document.getElementById('buyNoteCost').innerHTML = readable(game.notes.cost,"other") + " " + game[game.notes.buyCurrency].name;
 
     // Convert Notes to Phrases, Phrases to Chains, etc //
-    game.phrases.amount = new Decimal(game.notes.amount).div(game[game.notes.isPartOf].cost);
+    game[game.notes.isPartOf].amount = new Decimal(game.notes.amount).div(game[game.notes.isPartOf].cost);
+    game[game.phrases.isPartOf].amount = new Decimal(game.phrases.amount).div(game[game.phrases.isPartOf].cost);
+    game[game.chains.isPartOf].amount = new Decimal(game.chains.amount).div(game[game.chains.isPartOf].cost);
 
     // Enable and disable buttons if condition is not fulfilled //
 
