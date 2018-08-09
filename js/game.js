@@ -56,8 +56,11 @@ $(document).ready(function(){
 
   // Adds Money based on gainPerSec //
   function gainAuto(){
-    // Calculate GainPerSec - I should do something like foreach so things can generate other stuff too //
+    // Calculate GainPerSec - I should do something like foreach so things can generate other stuff too, and not //
+    // strictly define them, but ADD them //
     game[game.weed.generates].gainPerSec = new Decimal(game.weed.amount).mul(game.weed.power);
+    game[game.weedPlants.generates].gainPerSec = new Decimal(game.weedPlants.amount).mul(game.weedPlants.power);
+    game[game.songs.generates].gainPerSec = new Decimal(game.songs.amount).mul(game.songs.power);
 
     game.creativity.amount = new Decimal(game.creativity.amount).plus(game.creativity.gainPerSec/(1000/game.tickspeed));
     game.money.amount = new Decimal(game.money.amount).plus(game.money.gainPerSec/(1000/game.tickspeed));
@@ -103,6 +106,9 @@ $(document).ready(function(){
     document.getElementById('songsAmount').innerHTML = readable(game.songs.amount,"other");
     document.getElementById('songsPerSec').innerHTML = readable(game.songs.gainPerSec,"other");
     document.getElementById('buyWeedCost').innerHTML = readable(game.weed.cost,"money");
+    document.getElementById('buyWeedPlantCost').innerHTML = readable(game.weedPlants.cost,"money");
+    document.getElementById('weedPlantsAmount').innerHTML = readable(game.weedPlants.amount,"other");
+    document.getElementById('weedPlantsGenerating').innerHTML = readable(game.weedPlants.power*game.weedPlants.amount,"other") + " " + game[game.weedPlants.generates].name;
     document.getElementById('buyNoteCost').innerHTML = readable(game.notes.cost,"other") + " " + game[game.notes.buyCurrency].name;
 
     // Convert Notes to Phrases, Phrases to Chains, etc //
@@ -152,11 +158,17 @@ $(document).ready(function(){
   // Buy Weed //
   document.getElementById("buyWeedBtn").addEventListener("click", function(){
     gameBuy(game.weed, 1);
-  })
+  });
 
+  // Buy Note //
   document.getElementById("buyNoteBtn").addEventListener("click", function(){
     gameBuy(game.notes, 1);
-  })
+  });
+
+  // Buy Weedplant //
+  document.getElementById("buyWeedPlantBtn").addEventListener("click", function(){
+    gameBuy(game.weedPlants, 1);
+  });
 
   // Save Button //
   document.getElementById("save").addEventListener("click", function(){

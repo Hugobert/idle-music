@@ -116,7 +116,7 @@
 
         <!-- MONEY -->
         <div class="tab-pane fade show active" id="pageMoney" role="tabpanel" aria-labelledby="categoryMoney">
-          <h3>Money</h3>
+          <h2>Money</h2>
           <div class="container">
             <div class="row" id="moneyClickSection">
               <div class="col gameButton btn btn-success" id="clickMoneyBtn">
@@ -140,6 +140,7 @@
           </div>
         </div>
         <div class="tab-pane fade" id="pageMusic" role="tabpanel" aria-labelledby="categoryMusic">
+          <h2>Music</h2>
           <div class="container">
             <div class="row" id="musicBuySection">
               <div class="col gameButton btn btn-primary justify-content-between" id="buyNoteBtn">
@@ -155,7 +156,25 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="pageCreativity" role="tabpanel" aria-labelledby="categoryCreativity">...</div>
+        <div class="tab-pane fade" id="pageCreativity" role="tabpanel" aria-labelledby="categoryCreativity">
+          <h2>Creativity</h2>
+          <div class="container">
+            <div class="row" id="creativityBuySection">
+              <div class="col gameButton btn btn-success justify-content-between" id="buyWeedPlantBtn">
+                <div class="row">
+                  <div class="col">
+                    Buy a weed plant
+                  </div>
+                  <div class="col">
+                    <small><span id="buyWeedPlantCost"></span></small>
+                  </div>
+                </div>
+                <small>You currently have <span id="weedPlantsAmount"></span> weed plants. 
+                Together they generate <span id="weedPlantsGenerating"></span>.</small>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

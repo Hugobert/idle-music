@@ -1,5 +1,5 @@
 newGame = {
-  "tickspeed": 200,
+  "tickspeed": 100,
   "money": {
     "name": "€",
     "amount": new Decimal(0),
@@ -39,7 +39,9 @@ newGame = {
     "amount": new Decimal(0),
     "gainPerSec": new Decimal(0),
     "cost": 10,
-    "buyCurrency": "chains"
+    "buyCurrency": "chains",
+    "generates": "money",
+    "power": new Decimal(1)
   },
 
   "weed": {
@@ -56,5 +58,15 @@ newGame = {
     "name": "Creativity",
     "amount": new Decimal(0),
     "gainPerSec": new Decimal(0),
+  },
+
+  "weedPlants": {
+    "name": "Weed plants",
+    "amount": new Decimal(0),
+    "gainPerSec": new Decimal(0),
+    "cost": 100,
+    "buyCurrency": "money",
+    "power": new Decimal(0.1),
+    "generates": "weed"
   }
 };
