@@ -7,7 +7,6 @@ newGame = {
     "clickPower": new Decimal(1)
   },
 
-
   "notes": {
     "name": "Notes",
     "amount": new Decimal(0),
@@ -16,6 +15,7 @@ newGame = {
     "buyCurrency": "creativity",
     "isPartOf": "phrases"
   },
+
   "phrases": {
     "name": "Phrases",
     "amount": new Decimal(0),
@@ -24,12 +24,22 @@ newGame = {
     "buyCurrency": "notes",
     "isPartOf": "chains"
   },
+
   "chains": {
     "name": "Chains",
     "amount": new Decimal(0),
     "gainPerSec": new Decimal(0),
     "cost": 16,
-    "buyCurrency": "phrases"
+    "buyCurrency": "phrases",
+    "isPartOf": "songs"
+  },
+
+  "songs": {
+    "name": "Songs",
+    "amount": new Decimal(0),
+    "gainPerSec": new Decimal(0),
+    "cost": 10,
+    "buyCurrency": "chains"
   },
 
   "weed": {
