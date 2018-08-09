@@ -5,9 +5,15 @@ $(document).ready(function(){
 
   // Load saved game. If nonexitent, use defaults from items.js //
   if(localStorage.getItem("game") != null){
-    var game = JSON.parse(Base64.decode(localStorage.getItem("game")));
-    console.log("Saved game successfully loaded");
-    console.log(game);
+    var localGame = JSON.parse(Base64.decode(localStorage.getItem("game")));
+    if (localGame.version === newGame.version){
+      var game = localGame;
+      console.log("Saved game successfully loaded");
+      console.log(game);
+    } else {
+      var game = newGame;
+      console.log("Local save out of date and incompatible, starting new game.");
+    }
   } else {
     var game = newGame;
     console.log("Starting a new game");

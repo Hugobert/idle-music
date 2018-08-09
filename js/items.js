@@ -1,5 +1,7 @@
 newGame = {
+  "version": "0.0.1",
   "tickspeed": 100,
+  
   "money": {
     "name": "€",
     "amount": new Decimal(0),
@@ -68,5 +70,15 @@ newGame = {
     "buyCurrency": "money",
     "power": new Decimal(0.1),
     "generates": "weed"
+  },
+
+  "noteGenerators": {
+    "name": "Note generators",
+    "amount": new Decimal(0),
+    "gainPerSec": new Decimal(0),
+    "cost": 10,
+    "buyCurrency": "creativity.gainPerSec",
+    "power": new Decimal(1),
+    "generates": "notes"
   }
 };
