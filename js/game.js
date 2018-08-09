@@ -64,13 +64,21 @@ $(document).ready(function(){
   function gainAuto(){
     // Calculate GainPerSec - I should do something like foreach so things can generate other stuff too, and not //
     // strictly define them, but ADD them //
-    game[game.weed.generates].gainPerSec = new Decimal(game.weed.amount).mul(game.weed.power);
+
+    game[game.weed.generates].gainPerSec = new Decimal(game.weed.amount).mul(game.weed.power).sub(game.noteGenerators.consumesPerSec*game.noteGenerators.amount);
     game[game.weedPlants.generates].gainPerSec = new Decimal(game.weedPlants.amount).mul(game.weedPlants.power);
     game[game.songs.generates].gainPerSec = new Decimal(game.songs.amount).mul(game.songs.power);
 
+    game.notes.gainPerSec = new Decimal(game.noteGenerators.amount).mul(game.noteGenerators.power);
+
+    game.notes.amount = new Decimal(game.notes.amount).plus(game.notes.gainPerSec/(1000/game.tickspeed))
     game.creativity.amount = new Decimal(game.creativity.amount).plus(game.creativity.gainPerSec/(1000/game.tickspeed));
     game.money.amount = new Decimal(game.money.amount).plus(game.money.gainPerSec/(1000/game.tickspeed));
     game.weed.amount = new Decimal(game.weed.amount).plus(game.weed.gainPerSec/(1000/game.tickspeed));
+
+    if(new Decimal(game.creativity.amount).lte(0)){
+      game.creativity.amount = new Decimal(0);
+    }
   }
 
   // Subtracts 'amount' from 'target's amount //
@@ -115,7 +123,11 @@ $(document).ready(function(){
     document.getElementById('buyWeedPlantCost').innerHTML = readable(game.weedPlants.cost,"money");
     document.getElementById('weedPlantsAmount').innerHTML = readable(game.weedPlants.amount,"other");
     document.getElementById('weedPlantsGenerating').innerHTML = readable(game.weedPlants.power*game.weedPlants.amount,"other") + " " + game[game.weedPlants.generates].name;
+    document.getElementById('noteGeneratorsAmount').innerHTML = readable(game.noteGenerators.amount,"other");
+    document.getElementById('noteGeneratorsGenerating').innerHTML = readable(game.noteGenerators.power*game.noteGenerators.amount,"other") + " " + game[game.noteGenerators.generates].name;
+
     document.getElementById('buyNoteCost').innerHTML = readable(game.notes.cost,"other") + " " + game[game.notes.buyCurrency].name;
+    document.getElementById('buyNoteGeneratorCost').innerHTML = readable(game.noteGenerators.consumesPerSec,"other") + " " + game[game.noteGenerators.consumes].name + "/s";
 
     // Convert Notes to Phrases, Phrases to Chains, etc //
     game[game.notes.isPartOf].amount = new Decimal(game.notes.amount).div(game[game.notes.isPartOf].cost);
@@ -136,6 +148,19 @@ $(document).ready(function(){
       document.getElementById('buyNoteBtn').classList.add("disabled");
     } else {
       document.getElementById('buyNoteBtn').classList.remove("disabled");
+    }
+
+    // Buy WeedPlant Button //
+    if (new Decimal(game.weedPlants.cost).gt(game[game.weedPlants.buyCurrency].amount)){
+      document.getElementById('buyWeedPlantBtn').classList.add("disabled");
+    } else {
+      document.getElementById('buyWeedPlantBtn').classList.remove("disabled");
+    }
+
+    if(new Decimal(game.noteGenerators.consumesPerSec).gt(game[game.noteGenerators.consumes].gainPerSec)){
+      document.getElementById('buyNoteGeneratorBtn').classList.add("disabled");
+    } else {
+      document.getElementById('buyNoteGeneratorBtn').classList.remove("disabled");
     }
   }
 
@@ -175,6 +200,13 @@ $(document).ready(function(){
   document.getElementById("buyWeedPlantBtn").addEventListener("click", function(){
     gameBuy(game.weedPlants, 1);
   });
+
+  // Buy Note Generator //
+  document.getElementById("buyNoteGeneratorBtn").addEventListener("click", function(){
+    if(new Decimal(game.noteGenerators.consumesPerSec).lte(game[game.noteGenerators.consumes].gainPerSec)){
+      gameBuy(game.noteGenerators, 1);
+    }
+  })
 
   // Save Button //
   document.getElementById("save").addEventListener("click", function(){

@@ -1,7 +1,7 @@
 newGame = {
-  "version": "0.0.1",
+  "version": "0.0.2 a",
   "tickspeed": 100,
-  
+
   "money": {
     "name": "€",
     "amount": new Decimal(0),
@@ -76,8 +76,10 @@ newGame = {
     "name": "Note generators",
     "amount": new Decimal(0),
     "gainPerSec": new Decimal(0),
-    "cost": 10,
-    "buyCurrency": "creativity.gainPerSec",
+    "consumesPerSec": 10,
+    "consumes": "creativity",
+    "cost": 0,
+    "buyCurrency": "money",
     "power": new Decimal(1),
     "generates": "notes"
   }
