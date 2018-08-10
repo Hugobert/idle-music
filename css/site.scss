@@ -5,13 +5,15 @@ $sidebarWidth: 280px;
 $biggerButtonHeight: 70px;
 
 /* Colors */
+$black: #000000;
 $yellowSelected: #fec34d;
 $yellowText: #856404;
-$darkGrey: #101010;
+$darkGrey: #202020;
 $grassGreen: #77AA66;
 $grassGreen-dark: #558844;
+$mint: #00B285;
 
-/* Import Partials */
+/* Imports */
 
 /* Mixins */
 @mixin unselectable {
@@ -23,16 +25,26 @@ $grassGreen-dark: #558844;
 
 /* Sidebar */
 .sidenav {
-   height: 100%; /* Full-height: remove this if you want "auto" height */
-   width: $sidebarWidth;
-   position: fixed; /* (stay in place on scroll) */
-   z-index: 1; /* Stay on top */
-   top: 0; /* Stay at the top */
-   left: 0;
-   background-color: $darkGrey;
-   overflow-x: hidden; /* Disable horizontal scroll */
-   padding-top: 0px;
-   @include unselectable;
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: $sidebarWidth;
+  position: fixed; /* (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: $black;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 0px;
+  @include unselectable;
+  .nav-tabs .nav-link {
+    border: 0;
+  }
+  .nav-tabs {
+    border: 0;
+  }
+  #system {
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 #categoryMusic #weedStats {
@@ -47,6 +59,9 @@ $grassGreen-dark: #558844;
 
 /* Page content */
 .main {
+  color: #e0e0e0;
+  height: 100vh;
+  background-color: $darkGrey;
   margin-left: $sidebarWidth; /* Same as the width of the sidebar */
   padding: 10px;
   div {
@@ -55,9 +70,8 @@ $grassGreen-dark: #558844;
 
   .gameButton {
     height: 50px;
+    border-radius: 0;
     padding: 10px 10px;
-    border-radius: 5px;
-    color: #fff;
     .row {
       padding: 0;
       .col {
