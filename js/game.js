@@ -70,6 +70,9 @@ $(document).ready(function(){
     game[game.songs.generates].gainPerSec = new Decimal(game.songs.amount).mul(game.songs.power);
 
     game.notes.gainPerSec = new Decimal(game.noteGenerators.amount).mul(game.noteGenerators.power);
+    game.phrases.gainPerSec = new Decimal(game.notes.gainPerSec).div(game.phrases.cost);
+    game.chains.gainPerSec = new Decimal(game.phrases.gainPerSec).div(game.chains.cost);
+    game.songs.gainPerSec = new Decimal(game.chains.gainPerSec).div(game.songs.cost);
 
     game.notes.amount = new Decimal(game.notes.amount).plus(game.notes.gainPerSec/(1000/game.tickspeed))
     game.creativity.amount = new Decimal(game.creativity.amount).plus(game.creativity.gainPerSec/(1000/game.tickspeed));
@@ -122,9 +125,9 @@ $(document).ready(function(){
     document.getElementById('buyWeedCost').innerHTML = readable(game.weed.cost,"money");
     document.getElementById('buyWeedPlantCost').innerHTML = readable(game.weedPlants.cost,"money");
     document.getElementById('weedPlantsAmount').innerHTML = readable(game.weedPlants.amount,"other");
-    document.getElementById('weedPlantsGenerating').innerHTML = readable(game.weedPlants.power*game.weedPlants.amount,"other") + " " + game[game.weedPlants.generates].name;
+    document.getElementById('weedPlantsGenerating').innerHTML = readable(game.weedPlants.power*game.weedPlants.amount,"other") + " " + game[game.weedPlants.generates].name + "/s";
     document.getElementById('noteGeneratorsAmount').innerHTML = readable(game.noteGenerators.amount,"other");
-    document.getElementById('noteGeneratorsGenerating').innerHTML = readable(game.noteGenerators.power*game.noteGenerators.amount,"other") + " " + game[game.noteGenerators.generates].name;
+    document.getElementById('noteGeneratorsGenerating').innerHTML = readable(game.noteGenerators.power*game.noteGenerators.amount,"other") + " " + game[game.noteGenerators.generates].name + "/s";
 
     document.getElementById('buyNoteCost').innerHTML = readable(game.notes.cost,"other") + " " + game[game.notes.buyCurrency].name;
     document.getElementById('buyNoteGeneratorCost').innerHTML = readable(game.noteGenerators.consumesPerSec,"other") + " " + game[game.noteGenerators.consumes].name + "/s";
