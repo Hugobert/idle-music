@@ -106,6 +106,15 @@ $(document).ready(function(){
     }
   }
 
+  // Buy stuff that actually adds to another item
+  function gameBuySpecial(product, amount){
+    if (gameSubtract(game[product.buyCurrency], (product.cost*amount)) ){
+      gameAdd(game.notes, product.buys);
+    } else {
+      return false;
+    }
+  }
+
   // Updates all outputs (e.g. on the sidebar) //
   function updateValues() {
     document.getElementById('moneyAmount').innerHTML = readable(game.money.amount,"money");
@@ -130,12 +139,14 @@ $(document).ready(function(){
     document.getElementById('noteGeneratorsGenerating').innerHTML = readable(game.noteGenerators.power*game.noteGenerators.amount,"other") + " " + game[game.noteGenerators.generates].name + "/s";
 
     document.getElementById('buyNoteCost').innerHTML = readable(game.notes.cost,"other") + " " + game[game.notes.buyCurrency].name;
+    document.getElementById('buyPhraseCost').innerHTML = readable(game.phrases.cost,"other") + " " + game[game.phrases.buyCurrency].name;
     document.getElementById('buyNoteGeneratorCost').innerHTML = readable(game.noteGenerators.consumesPerSec,"other") + " " + game[game.noteGenerators.consumes].name + "/s";
 
     // Convert Notes to Phrases, Phrases to Chains, etc //
-    game[game.notes.isPartOf].amount = new Decimal(game.notes.amount).div(game[game.notes.isPartOf].cost);
-    game[game.phrases.isPartOf].amount = new Decimal(game.phrases.amount).div(game[game.phrases.isPartOf].cost);
-    game[game.chains.isPartOf].amount = new Decimal(game.chains.amount).div(game[game.chains.isPartOf].cost);
+    game[game.notes.isPartOf].amount = new Decimal(game.notes.amount).div(game[game.notes.isPartOf].requiresLower);
+    game[game.phrases.isPartOf].amount = new Decimal(game.phrases.amount).div(game[game.phrases.isPartOf].requiresLower);
+    game[game.chains.isPartOf].amount = new Decimal(game.chains.amount).div(game[game.chains.isPartOf].requiresLower);
+
 
     // Enable and disable buttons if condition is not fulfilled //
 
@@ -151,6 +162,13 @@ $(document).ready(function(){
       document.getElementById('buyNoteBtn').classList.add("disabled");
     } else {
       document.getElementById('buyNoteBtn').classList.remove("disabled");
+    }
+
+    // Buy Phrase Button //
+    if (new Decimal(game.phrases.cost).gt(game[game.phrases.buyCurrency].amount)){
+      document.getElementById('buyPhraseBtn').classList.add("disabled");
+    } else {
+      document.getElementById('buyPhraseBtn').classList.remove("disabled");
     }
 
     // Buy WeedPlant Button //
@@ -198,6 +216,11 @@ $(document).ready(function(){
   document.getElementById("buyNoteBtn").addEventListener("click", function(){
     gameBuy(game.notes, 1);
   });
+
+  // Buy Phrase //
+  document.getElementById("buyPhraseBtn").addEventListener("click", function(){
+    gameBuySpecial(game.phrases, 1);
+  })
 
   // Buy Weedplant //
   document.getElementById("buyWeedPlantBtn").addEventListener("click", function(){
