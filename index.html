@@ -103,88 +103,91 @@
         </li>
 
       </div>
-
-      <div id="system" class="fixed-bottom">
-        <div type="button" class="btn btn-dark btn-sm" id="save">Save progress</div>
-        <button type="button" class="btn btn-dark btn-sm" id="reset">! RESET !</button>
+  		<div id="system" class="container">
+        <div class="row">
+          <div type="button" class="col btn btn-dark btn-sm" id="save">Save progress</div>
+          <div type="button" class="col btn btn-danger btn-sm" id="reset">! RESET !</div>
+        </div>
       </div>
     </nav>
 
     <!-- CONTENT -->
-    <div class="main">
-      <div class="tab-content" id="nav-tabContent">
+    <div class="wrapper">
+      <div class="main">
+        <div class="tab-content" id="nav-tabContent">
 
-        <!-- MONEY -->
-        <div class="tab-pane fade show active" id="pageMoney" role="tabpanel" aria-labelledby="categoryMoney">
-          <h2>Money</h2>
-          <div class="container">
-            <div class="row" id="moneyClickSection">
-              <div class="col gameButton btn btn-success" id="clickMoneyBtn">
-                Beg for money
+          <!-- MONEY -->
+          <div class="tab-pane fade show active" id="pageMoney" role="tabpanel" aria-labelledby="categoryMoney">
+            <h2>Money</h2>
+            <div class="container">
+              <div class="row" id="moneyClickSection">
+                <div class="col gameButton btn btn-success" id="clickMoneyBtn">
+                  Beg for money
+                </div>
+                <div class="col"></div>
               </div>
-              <div class="col"></div>
-            </div>
-            <div class="row">
-              <div class="col gameButton btn btn-info justify-content-between" id="buyWeedBtn">
-                <div class="row">
-                  <div class="col">
-                    Buy weed
-                  </div>
-                  <div class="col">
-                    <small><span id="buyWeedCost"></span></small>
+              <div class="row">
+                <div class="col gameButton btn btn-info justify-content-between" id="buyWeedBtn">
+                  <div class="row">
+                    <div class="col">
+                      Buy weed
+                    </div>
+                    <div class="col">
+                      <small><span id="buyWeedCost"></span></small>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col"></div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="pageMusic" role="tabpanel" aria-labelledby="categoryMusic">
-          <h2>Music</h2>
-          <div class="container">
-            <div class="row" id="musicBuySection">
-              <div class="col gameButton btn btn-primary justify-content-between" id="buyNoteBtn">
-                <div class="row">
-                  <div class="col">
-                    Create note
-                  </div>
-                  <div class="col">
-                    <small><span id="buyNoteCost"></span></small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row" id="musicGeneratorBuySection">
-              <div class="col gameButton btn btn-dark justify-content-between" id="buyNoteGeneratorBtn">
-                <div class="row">
-                  <div class="col">
-                    Invent a note generator
-                  </div>
-                  <div class="col">
-                    <small><span id="buyNoteGeneratorCost"></span></small>
-                  </div>
-                </div>
-                <small>You currently have <span id="noteGeneratorsAmount"></span> note generators.
-                Together they generate <span id="noteGeneratorsGenerating"></span>.</small>
+                <div class="col"></div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="tab-pane fade" id="pageCreativity" role="tabpanel" aria-labelledby="categoryCreativity">
-          <h2>Creativity</h2>
-          <div class="container">
-            <div class="row" id="creativityBuySection">
-              <div class="col gameButton btn btn-success justify-content-between" id="buyWeedPlantBtn">
-                <div class="row">
-                  <div class="col">
-                    Buy a weed plant
-                  </div>
-                  <div class="col">
-                    <small><span id="buyWeedPlantCost"></span></small>
+          <div class="tab-pane fade" id="pageMusic" role="tabpanel" aria-labelledby="categoryMusic">
+            <h2>Music</h2>
+            <div class="container">
+              <div class="row" id="musicBuySection">
+                <div class="col gameButton btn btn-primary justify-content-between" id="buyNoteBtn">
+                  <div class="row">
+                    <div class="col">
+                      Create note
+                    </div>
+                    <div class="col">
+                      <small><span id="buyNoteCost"></span></small>
+                    </div>
                   </div>
                 </div>
-                <small>You currently have <span id="weedPlantsAmount"></span> weed plants.
-                Together they generate <span id="weedPlantsGenerating"></span>.</small>
+              </div>
+              <div class="row" id="musicGeneratorBuySection">
+                <div class="col gameButton btn btn-dark justify-content-between" id="buyNoteGeneratorBtn">
+                  <div class="row">
+                    <div class="col">
+                      Invent a note generator
+                    </div>
+                    <div class="col">
+                      <small><span id="buyNoteGeneratorCost"></span></small>
+                    </div>
+                  </div>
+                  <small>You currently have <span id="noteGeneratorsAmount"></span> note generators.
+                  Together they generate <span id="noteGeneratorsGenerating"></span>.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pageCreativity" role="tabpanel" aria-labelledby="categoryCreativity">
+            <h2>Creativity</h2>
+            <div class="container">
+              <div class="row" id="creativityBuySection">
+                <div class="col gameButton btn btn-success justify-content-between" id="buyWeedPlantBtn">
+                  <div class="row">
+                    <div class="col">
+                      Buy a weed plant
+                    </div>
+                    <div class="col">
+                      <small><span id="buyWeedPlantCost"></span></small>
+                    </div>
+                  </div>
+                  <small>You currently have <span id="weedPlantsAmount"></span> weed plants.
+                  Together they generate <span id="weedPlantsGenerating"></span>.</small>
+                </div>
               </div>
             </div>
           </div>
