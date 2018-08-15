@@ -70,9 +70,9 @@ $(document).ready(function(){
     game[game.songs.generates].gainPerSec = new Decimal(game.songs.amount).mul(game.songs.power);
 
     game.notes.gainPerSec = new Decimal(game.noteGenerators.amount).mul(game.noteGenerators.power);
-    game.phrases.gainPerSec = new Decimal(game.notes.gainPerSec).div(game.phrases.cost);
-    game.chains.gainPerSec = new Decimal(game.phrases.gainPerSec).div(game.chains.cost);
-    game.songs.gainPerSec = new Decimal(game.chains.gainPerSec).div(game.songs.cost);
+    game.phrases.gainPerSec = new Decimal(game.notes.gainPerSec).div(game.phrases.buys);
+    game.chains.gainPerSec = new Decimal(game.notes.gainPerSec).div(game.chains.buys);
+    game.songs.gainPerSec = new Decimal(game.notes.gainPerSec).div(game.songs.buys);
 
     game.notes.amount = new Decimal(game.notes.amount).plus(game.notes.gainPerSec/(1000/game.tickspeed))
     game.creativity.amount = new Decimal(game.creativity.amount).plus(game.creativity.gainPerSec/(1000/game.tickspeed));
