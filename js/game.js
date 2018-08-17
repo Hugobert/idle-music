@@ -9,16 +9,18 @@ $(document).ready(function(){
     if (localGame.version === newGame.version){
       var game = localGame;
       console.log("Saved game successfully loaded");
-      console.log(game);
+      console.log(game.version);
     } else {
-      var game = newGame;
       console.log("Local save out of date and incompatible, starting new game.");
+      alert("There has been an update. Sadly, your savegame isn't compatible with the new version. Starting a new game now.");
+      var game = newGame;
     }
   } else {
     var game = newGame;
     console.log("Starting a new game");
-    console.log(game);
+    console.log(game.version);
   }
+  document.getElementById("version").innerHTML = game.version;
   updateValues();
 
 
